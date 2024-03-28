@@ -7,6 +7,7 @@ namespace Dice_Game__topic_5._5_assignment_
         static void Main(string[] args)
         {
             double bankAccount, playerBet;
+            int diceTotal;
             string playerName, betOption;
             Die die1 = new Die();
             Die die2 = new Die();
@@ -105,6 +106,30 @@ namespace Dice_Game__topic_5._5_assignment_
                 Console.WriteLine("If the sum isn't, well...");
                 Thread.Sleep(500);
                 Console.WriteLine("Now Rolling...");
+                Thread.Sleep(300);
+                die1.RollDie();
+                die2.RollDie();
+                die1.DrawRoll();
+                die2.DrawRoll();
+                diceTotal = die1.roll + die2.roll;
+                diceTotal = diceTotal % 2;
+                if (diceTotal == 0)
+                {
+                    bankAccount = bankAccount + playerBet;
+                    Console.WriteLine("The numbers add up to an even number. You win!");
+                    Console.WriteLine($"You now have {bankAccount.ToString("C")} dollars.");
+                    Thread.Sleep(500);
+                    Console.WriteLine("Play again soon!");
+                }
+                else
+                {
+                    bankAccount = bankAccount - playerBet;
+                    Console.WriteLine("The numbers add up to an odd number. You lost...");
+                    Console.WriteLine($"You now have {bankAccount.ToString("C")} dollars.");
+                    Thread.Sleep(500);
+                    Console.WriteLine("Maybe next time.");
+                }
+
             }
             else if (betOption == "odd")
             {
@@ -114,6 +139,29 @@ namespace Dice_Game__topic_5._5_assignment_
                 Console.WriteLine("If the sum isn't, well...");
                 Thread.Sleep(500);
                 Console.WriteLine("Now Rolling...");
+                Thread.Sleep(300);
+                die1.RollDie();
+                die2.RollDie();
+                die1.DrawRoll();
+                die2.DrawRoll();
+                diceTotal = die1.roll + die2.roll;
+                diceTotal = diceTotal % 2;
+                if (diceTotal == 1)
+                {
+                    bankAccount = bankAccount + playerBet;
+                    Console.WriteLine("The numbers add up to an odd number. You win!");
+                    Console.WriteLine($"You now have {bankAccount.ToString("C")} dollars.");
+                    Thread.Sleep(500);
+                    Console.WriteLine("Play again soon!");
+                }
+                else
+                {
+                    bankAccount = bankAccount - playerBet;
+                    Console.WriteLine("The numbers add up to an even number. You lost...");
+                    Console.WriteLine($"You now have {bankAccount.ToString("C")} dollars.");
+                    Thread.Sleep(500);
+                    Console.WriteLine("Maybe next time.");
+                }
             }
             else
             {
